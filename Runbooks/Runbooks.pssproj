@@ -1,0 +1,52 @@
+﻿<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9c9dad08-b960-45fd-8a6c-4113503cc836}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MyApplication</RootNamespace>
+    <AssemblyName>MyApplication</AssemblyName>
+    <Name>Runbooks</Name>
+    <PackageEntryPoint>AzAuthenticate.ps1</PackageEntryPoint>
+    <DotNetVersion>v4.7.2</DotNetVersion>
+    <PackageType>Console</PackageType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="AzureRMAuthenticate.ps1" />
+    <Compile Include="ImageFromVM.ps1" />
+    <Compile Include="CloneVM.ps1" />
+    <Compile Include="Extension Dependencies\SysPrep.ps1" />
+    <Compile Include="local\local_AzureRMAuthenticate.ps1" />
+    <Compile Include="local\local_CloneVM.ps1" />
+    <Compile Include="local\local_CloneVMandCreateImage.ps1" />
+    <Compile Include="local\local_ImageFromVM.ps1" />
+    <Compile Include="local\Publish Runbook.ps1" />
+    <Compile Include="local\Publish Runbooks.ps1" />
+    <Compile Include="RB-AzureRMAuthenticate.ps1" />
+    <Compile Include="RB-CloneVMandCreateImage.ps1" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="local\" />
+    <Folder Include="Extension Dependencies\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Target Name="Build" />
+  <Import Project="$(MSBuildExtensionsPath)\PowerShell Tools for Visual Studio\PowerShellTools.targets" Condition="Exists('$(MSBuildExtensionsPath)\PowerShell Tools for Visual Studio\PowerShellTools.targets')" />
+</Project>

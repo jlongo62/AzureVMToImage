@@ -1,0 +1,23 @@
+﻿@Html.EJS().Grid("DataGrid").DataSource((IEnumerable<object>)ViewBag.dataSource).AllowResizing(true).AllowSorting().AllowFiltering().AllowExcelExport().Columns(col=> {
+    col.Field("RowKey").IsPrimaryKey(true).Add();
+    col.Field("PartitionKey").Add();
+    col.Field("sourceResourceId").Add();
+    col.Field("imagesLocation").Add();
+    col.Field("imagesResourceGroup").Add();
+    col.Field("imagePrefix").Add();
+    col.Field("imageVersion").Add();
+}).AllowPaging().Toolbar(new List<string>() { "Search" , "Add", "Edit", "Delete", "Update", "Cancel" , "ExcelExport", "CsvExport"}).FilterSettings(filter => { filter.Type(Syncfusion.EJ2.Grids.FilterType.Menu); }).ToolbarClick("toolbarclick").Render()
+
+<script>
+function toolbarclick(args)
+{
+   if (args.item.id === this.element.id + ' _csvexport') 
+   {
+    this.csvExport();
+   }
+   if (args.item.id === this.element.id + '_excelexport') 
+   {
+     this.excelExport();
+   }
+}
+</script>
