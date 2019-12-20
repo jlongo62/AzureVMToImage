@@ -1,6 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-//using FunctionApp1;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Http;
