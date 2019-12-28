@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 
 namespace VMSSManagementFunctions.Test
@@ -29,6 +30,7 @@ namespace VMSSManagementFunctions.Test
         {
             string message = formatter(state, exception);
             TestContext.WriteLine(message);
+            Debug.WriteLine(message);
         }
     }
 }
